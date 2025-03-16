@@ -1,0 +1,52 @@
+group-cooldowns:
+  command:
+    default: 5
+    vip: 3
+  teleport:
+    default: 5
+    vip: 3
+
+bossbar-settings:
+  text: "Вы будете телепортированы через {time} сек."
+  # PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE
+  color: BLUE
+  # SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+  style: SOLID
+
+request-time: 120
+
+messages:
+  cooldown: "&cЖдите еще &4{time} &cблять!"
+  not-found: "&cИгрок &4{player} &cне был найден!"
+  usage: "&fИспользуй: &e/tpa <ник>"
+  no-requests: "&cУ Вас нету запросов на телепортацию!"
+  many-requests: "&cУ Вас несколько запросов на телепортацию, выберите от кого принять: {players}"
+  no-request: "&cУ Вас нет запроса на телепортацию от {player}!"
+  already-sent: "&cВы уже отправили запрос игроку {player}!"
+  self: "&cНельзя взаимодействовать с самим собой!"
+  sent: |-
+    &aГатова. &fВаш запрос улетел игроку &n{player}&r.
+    {decline}
+  request: |-
+    Ебло {player} хочет Вас убить?
+    {accept} {decline}
+  accepted: "&aВы приняли запрос от игрока {player}!"
+  declined: "&cВы отменили запрос от игрока {player}!"
+  accepted-sender: "&cИгрок {player} принял ваш запрос на телепортацию! &cНе получайте урон&f, чтобы не пойти нахуй!"
+  declined-sender: "&cИгрок {player} отменил ваш запрос на телепортацию!"
+  time-left: "&cИгрок {player} не успел принять ваш запрос на телепортацию!"
+  canceled: "&eВы отменили запрос на телепортацию к игроку {player}!"
+  damaged: "&cТелепортация была отменена из-за получения урона!"
+  tptoggle-on: "&fЗапросы на телепортацию &cотключены&f!"
+  tptoggle-off: "&fЗапросы на телепортацию &aвключены&а!"
+  tptoggled: "&cИгрок {player} отключил запросы на телепортацию!"
+
+  accept: "&a[ПРИНЯТЬ]"
+  accept-hover: "&aНажмите, чтобы принять"
+  decline: "&c[ОТКЛОНИТЬ]"
+  decline-hover: "&cНажмите, чтобы отклонить"
+
+  time:
+    seconds: "с."
+    minutes: "м. "
+    hours: "ч. "

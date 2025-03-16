@@ -1,0 +1,27 @@
+name: ${project.name}
+version: ${project.version}
+
+main: com.github.groundbreakingmc.hlteleports.Teleports
+api-version: 1.18
+
+commands:
+  tpa:
+    permission: teleports.tpa
+
+  tpaccept:
+    permission: teleports.tpaccept
+    aliases:
+      - tpyes
+
+  tpacancel:
+    permission: teleports.tpacancel
+    aliases:
+      - tpno
+
+  tpacancelrequest:
+    permission: teleports.tpacancelrequest
+    aliases:
+      - tpnorequest
+
+  tptoggle:
+    permission: teleports.tptoggle
