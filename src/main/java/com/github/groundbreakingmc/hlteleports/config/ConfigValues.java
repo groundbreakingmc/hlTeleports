@@ -1,4 +1,4 @@
-package com.github.groundbreakingmc.hlteleports.utils.config;
+package com.github.groundbreakingmc.hlteleports.config;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
 import com.github.groundbreakingmc.mylib.colorizer.Colorizer;

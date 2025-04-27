@@ -1,16 +1,13 @@
 package com.github.groundbreakingmc.hlteleports.command;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
-import org.bukkit.Bukkit;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public final class TpacancelRequestHandler implements TabExecutor {

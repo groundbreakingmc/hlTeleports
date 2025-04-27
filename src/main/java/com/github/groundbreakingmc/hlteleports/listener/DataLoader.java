@@ -1,7 +1,7 @@
 package com.github.groundbreakingmc.hlteleports.listener;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.database.DatabaseHandler;
+import com.github.groundbreakingmc.hlteleports.database.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public final class DataLoader implements Listener {
 
     private final Teleports plugin;
-    private final DatabaseHandler database;
+    private final Database database;
 
     public DataLoader(Teleports plugin) {
         this.plugin = plugin;

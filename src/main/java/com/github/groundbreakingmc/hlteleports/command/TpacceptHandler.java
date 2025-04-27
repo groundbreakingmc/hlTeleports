@@ -1,9 +1,9 @@
 package com.github.groundbreakingmc.hlteleports.command;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.collections.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.cooldowns.Cooldowns;
 import com.github.groundbreakingmc.hlteleports.events.AcceptTpaRequestEvent;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BossBar;
 import org.bukkit.command.Command;
@@ -109,11 +109,19 @@ public final class TpacceptHandler implements CommandExecutor {
 
                 private int timeLeft = time - 1;
                 private final double step = 1.0 / time;
+                private final double startHealth = target.getHealth();
 
                 @Override
                 public void run() {
+                    if (startHealth > target.getHealth()) {
+                        Teleports.cancelTeleportation(target);
+                        target.sendMessage(TpacceptHandler.this.configValues.getDamagedMessage());
+                        return;
+                    }
+
                     bossBar.setTitle(
-                            TpacceptHandler.this.configValues.getBossBarText().replace("{time}", Integer.toString(this.timeLeft))
+                            TpacceptHandler.this.configValues.getBossBarText()
+                                    .replace("{time}", Integer.toString(this.timeLeft))
                     );
 
                     final double newProgress = bossBar.getProgress() - this.step;
@@ -124,7 +132,7 @@ public final class TpacceptHandler implements CommandExecutor {
                             bossBar.removePlayer(target);
                             target.teleport(who.getLocation());
                         }, 5L);
-                        cancel();
+                        Teleports.cancelTeleportation(target);
                         return;
                     }
 

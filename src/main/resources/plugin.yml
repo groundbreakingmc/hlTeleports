@@ -4,6 +4,10 @@ version: ${project.version}
 main: com.github.groundbreakingmc.hlteleports.Teleports
 api-version: 1.18
 
+libraries:
+  - "org.spongepowered:configurate-yaml:4.0.0"
+  - "com.github.ben-manes.caffeine:caffeine:3.1.8"
+
 commands:
   tpa:
     permission: teleports.tpa

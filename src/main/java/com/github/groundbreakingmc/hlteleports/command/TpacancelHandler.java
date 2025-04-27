@@ -1,9 +1,9 @@
 package com.github.groundbreakingmc.hlteleports.command;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.collections.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.cooldowns.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
 import com.github.groundbreakingmc.hlteleports.events.CancellTpaRequestEvent;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,7 +1,7 @@
-package com.github.groundbreakingmc.hlteleports.collections;
+package com.github.groundbreakingmc.hlteleports.cooldowns;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
 import com.github.groundbreakingmc.mylib.collections.expiring.SelfExpiringMap;
 import com.github.groundbreakingmc.mylib.utils.time.TimeFormatterUtil;
 import org.bukkit.entity.Player;

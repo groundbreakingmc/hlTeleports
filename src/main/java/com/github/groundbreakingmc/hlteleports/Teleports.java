@@ -1,14 +1,12 @@
 package com.github.groundbreakingmc.hlteleports;
 
-import com.github.groundbreakingmc.hlteleports.collections.Cooldowns;
 import com.github.groundbreakingmc.hlteleports.command.*;
-import com.github.groundbreakingmc.hlteleports.database.DatabaseHandler;
-import com.github.groundbreakingmc.hlteleports.listener.DamageListener;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.cooldowns.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.database.Database;
 import com.github.groundbreakingmc.hlteleports.listener.DataLoader;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
 import com.github.groundbreakingmc.mylib.utils.vault.VaultUtils;
 import com.google.common.collect.ImmutableList;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import lombok.Getter;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -19,12 +17,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 @SuppressWarnings("unused") // unused methods may be needful as api for future
 @Getter
@@ -35,19 +33,19 @@ public final class Teleports extends JavaPlugin {
 
     private final ConfigValues configValues;
     private final Cooldowns cooldowns;
-    private final DatabaseHandler database;
+    private final Database database;
 
     private Permission permission;
 
     static {
-        REQUESTS = new Object2ObjectOpenHashMap<>();
-        TELEPORTING = new Object2ObjectOpenHashMap<>();
+        REQUESTS = new ConcurrentHashMap<>();
+        TELEPORTING = new ConcurrentHashMap<>();
     }
 
     public Teleports() {
         this.configValues = new ConfigValues(this);
         this.cooldowns = new Cooldowns(this);
-        this.database = new DatabaseHandler(this);
+        this.database = new Database(this);
     }
 
     @Override
@@ -75,7 +73,6 @@ public final class Teleports extends JavaPlugin {
         this.setupCommand("tptoggle", tpToggleHandler, tpToggleHandler);
 
         final PluginManager pluginManager = super.getServer().getPluginManager();
-        pluginManager.registerEvents(new DamageListener(this), this);
         pluginManager.registerEvents(new DataLoader(this), this);
 
         for (final Player target : Bukkit.getOnlinePlayers()) {

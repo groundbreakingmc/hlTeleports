@@ -1,9 +1,9 @@
 package com.github.groundbreakingmc.hlteleports.command;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.collections.Cooldowns;
-import com.github.groundbreakingmc.hlteleports.database.DatabaseHandler;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.cooldowns.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.database.Database;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,7 +19,7 @@ public final class TpToggleHandler implements TabExecutor {
     private final Teleports plugin;
     private final ConfigValues configValues;
     private final Cooldowns cooldowns;
-    private final DatabaseHandler database;
+    private final Database database;
 
     public TpToggleHandler(Teleports plugin) {
         this.plugin = plugin;

@@ -1,7 +1,6 @@
 package com.github.groundbreakingmc.hlteleports.database;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.mylib.database.Database;
 import com.github.groundbreakingmc.mylib.database.DatabaseUtils;
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import org.bukkit.Bukkit;
@@ -12,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Set;
 import java.util.UUID;
 
-public final class DatabaseHandler extends Database {
+public final class Database extends com.github.groundbreakingmc.mylib.database.Database {
 
     private static final String ADD_QUERY = "INSERT OR IGNORE INTO tptoggled(playerUUID) VALUES(?);";
     private static final String REMOVE_QUERY = "DELETE FROM tptoggled WHERE playerUUID = ?;";
@@ -21,7 +20,7 @@ public final class DatabaseHandler extends Database {
     private final Teleports plugin;
     private final Set<UUID> cache;
 
-    public DatabaseHandler(Teleports plugin) {
+    public Database(Teleports plugin) {
         super(DatabaseUtils.getSQLiteDriverUrl(plugin));
         this.plugin = plugin;
         this.cache = new ObjectArraySet<>();
@@ -32,7 +31,7 @@ public final class DatabaseHandler extends Database {
         try (final Connection connection = super.getConnection()) {
             super.createTables(connection, query);
         } catch (final SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
     }
 
@@ -48,7 +47,7 @@ public final class DatabaseHandler extends Database {
         try (final Connection connection = super.getConnection()) {
             super.executeUpdateQuery(query, connection, player.getUniqueId());
         } catch (final SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
     }
 
@@ -56,11 +55,11 @@ public final class DatabaseHandler extends Database {
         try (final Connection connection = super.getConnection()) {
             if (super.containsInTable(CHECK_QUERY, connection, player.getUniqueId())) {
                 Bukkit.getScheduler().runTask(this.plugin, () ->
-                    this.addToCache(player)
+                        this.addToCache(player)
                 );
             }
         } catch (final SQLException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
     }
 

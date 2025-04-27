@@ -1,10 +1,10 @@
 package com.github.groundbreakingmc.hlteleports.command;
 
 import com.github.groundbreakingmc.hlteleports.Teleports;
-import com.github.groundbreakingmc.hlteleports.collections.Cooldowns;
-import com.github.groundbreakingmc.hlteleports.database.DatabaseHandler;
+import com.github.groundbreakingmc.hlteleports.cooldowns.Cooldowns;
+import com.github.groundbreakingmc.hlteleports.config.ConfigValues;
+import com.github.groundbreakingmc.hlteleports.database.Database;
 import com.github.groundbreakingmc.hlteleports.events.SentTpaRequestEvent;
-import com.github.groundbreakingmc.hlteleports.utils.config.ConfigValues;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
@@ -25,7 +25,7 @@ public final class TpaHandler implements TabExecutor {
     private final Teleports plugin;
     private final ConfigValues configValues;
     private final Cooldowns cooldowns;
-    private final DatabaseHandler database;
+    private final Database database;
 
     public TpaHandler(Teleports plugin) {
         this.plugin = plugin;
